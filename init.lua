@@ -1,0 +1,7 @@
+require('config-colorschemes.tokyonight')
+require('config-lsp.language-servers')
+require('config-mini')
+require('config-packer')
+require('config-plugin')
+require('mappings')
+require('settings')
