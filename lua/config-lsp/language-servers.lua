@@ -36,11 +36,24 @@ local lsp_flags = {
   debounce_text_changes = 150,
 }
 
-local servers = {'pyright', 'tsserver', 'clangd', 'ocamllsp', 'hls'}
+
+local servers = {'pyright', 'tsserver', 'clangd',
+  'ocamllsp', 'hls', 'csharp_ls'}
 
 for _, lsp in ipairs(servers) do
   require('lspconfig')[lsp].setup {
     on_attach = on_attach,
     flags = lsp_flags,
+  }
+end
+
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities.textDocument.completion.completionItem.snippetSupport = true
+
+local vscode_servers = {'html', 'cssls', 'jsonls'}
+
+for _, lsp in ipairs(vscode_servers) do
+  require('lspconfig')[lsp].setup {
+    capabilities = capabilities,
   }
 end
