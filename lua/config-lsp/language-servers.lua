@@ -38,7 +38,7 @@ local lsp_flags = {
 
 
 local servers = {'pyright', 'tsserver', 'clangd',
-  'ocamllsp', 'hls', 'csharp_ls'}
+  'ocamllsp', 'hls', 'csharp_ls', 'zls'}
 
 for _, lsp in ipairs(servers) do
   require('lspconfig')[lsp].setup {
