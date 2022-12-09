@@ -12,3 +12,5 @@ require'which-key'.setup {}
 require'telescope'.setup {}
 
 require('lspfuzzy').setup {}
+
+-- require('nvim_comment').setup()

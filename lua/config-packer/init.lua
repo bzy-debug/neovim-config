@@ -7,8 +7,8 @@ return require'packer'.startup(function()
   use { 'echasnovski/mini.nvim', branch = 'stable' }
   use 'nvim-treesitter/nvim-treesitter'
   use 'folke/tokyonight.nvim'
-  use 'Shatur/neovim-ayu'
---  use 'nvim-treesitter/nvim-treesitter-textobjects'
+  -- use 'Shatur/neovim-ayu'
+  -- use 'nvim-treesitter/nvim-treesitter-textobjects'
   use 'ggandor/lightspeed.nvim'
   use 'folke/which-key.nvim'
   use {
