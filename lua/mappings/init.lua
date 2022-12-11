@@ -18,13 +18,6 @@ map('n', '<Tab>', ':bn<CR>', opts)
 map('n', '<S-Tab>', ':bp<CR>', opts)
 map('n', '<C-w>', ':bd<CR>', opts)
 
-map('i', '<Tab>',   [[pumvisible() ? "\<C-n>" : "\<Tab>"]],   { noremap = true, expr = true })
-map('i', '<S-Tab>', [[pumvisible() ? "\<C-p>" : "\<S-Tab>"]], { noremap = true, expr = true })
-
--- scrool
-map('n', '<C-d>', '10j', opts)
-map('n', '<C-u>', '10k', opts)
-
 -- lightspeed
 map('n', '<leader>j', '<Plug>Lightspeed_s', opts)
 map('n', '<leader>k', '<Plug>Lightspeed_S', opts)

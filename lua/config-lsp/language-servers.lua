@@ -44,6 +44,7 @@ for _, lsp in ipairs(servers) do
   require('lspconfig')[lsp].setup {
     on_attach = on_attach,
     flags = lsp_flags,
+    capabilities = capabilities,
   }
 end
 

@@ -7,8 +7,6 @@ return require'packer'.startup(function()
   use { 'echasnovski/mini.nvim', branch = 'stable' }
   use 'nvim-treesitter/nvim-treesitter'
   use 'folke/tokyonight.nvim'
-  -- use 'Shatur/neovim-ayu'
-  -- use 'nvim-treesitter/nvim-treesitter-textobjects'
   use 'ggandor/lightspeed.nvim'
   use 'folke/which-key.nvim'
   use {
@@ -20,6 +18,15 @@ return require'packer'.startup(function()
   requires = {
     {'junegunn/fzf'},
     {'junegunn/fzf.vim'},  -- to enable preview (optional)
-  },
-}
+    }
+  }
+
+  use 'hrsh7th/cmp-nvim-lsp'
+  use 'hrsh7th/cmp-buffer'
+  use 'hrsh7th/cmp-path'
+  use 'hrsh7th/cmp-cmdline'
+  use 'hrsh7th/nvim-cmp'
+  use 'L3MON4D3/LuaSnip'
+  use 'saadparwaiz1/cmp_luasnip'
+
 end)
