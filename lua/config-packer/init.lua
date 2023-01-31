@@ -6,7 +6,7 @@ return require'packer'.startup(function()
   use 'neovim/nvim-lspconfig'
   use { 'echasnovski/mini.nvim', branch = 'stable' }
   use 'nvim-treesitter/nvim-treesitter'
-  use 'folke/tokyonight.nvim'
+  use 'ishan9299/nvim-solarized-lua'
   use 'ggandor/lightspeed.nvim'
   use 'folke/which-key.nvim'
   use {
@@ -28,5 +28,6 @@ return require'packer'.startup(function()
   use 'hrsh7th/nvim-cmp'
   use 'L3MON4D3/LuaSnip'
   use 'saadparwaiz1/cmp_luasnip'
-
+  use 'nvim-lualine/lualine.nvim'
+  use 'sbdchd/neoformat'
 end)

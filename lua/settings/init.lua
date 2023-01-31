@@ -6,6 +6,7 @@ set.smarttab = true
 set.shiftwidth = 2
 set.tabstop = 2
 set.mouse = 'a'
+set.autoindent = true
 
 set.hlsearch = false
 set.incsearch = true

@@ -1,4 +1,4 @@
-require('config-colorschemes.tokyonight')
+require('config-colorschemes.solarized')
 require('config-lsp.language-servers')
 require('config-mini')
 require('config-packer')
