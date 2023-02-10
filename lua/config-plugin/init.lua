@@ -1,5 +1,8 @@
 require'nvim-tree'.setup ()
 
+vim.o.background = 'light'
+require'vscode'.setup {}
+
 require'nvim-treesitter.configs'.setup {
   highlight = { enable = true, disable = {'scheme'} },
   indent = { enable = true }
@@ -15,7 +18,7 @@ require('lspfuzzy').setup {}
 
 require('lualine').setup {
   options = {
-    theme = 'solarized'
+    theme = 'vscode'
   },
   sections = {
   lualine_c = {

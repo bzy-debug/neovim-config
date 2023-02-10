@@ -1,6 +1,5 @@
 return require'packer'.startup(function()
   use 'wbthomason/packer.nvim'
-  use "EdenEast/nightfox.nvim"
   use 'kyazdani42/nvim-web-devicons'
   use 'kyazdani42/nvim-tree.lua'
   use 'neovim/nvim-lspconfig'
@@ -29,5 +28,5 @@ return require'packer'.startup(function()
   use 'L3MON4D3/LuaSnip'
   use 'saadparwaiz1/cmp_luasnip'
   use 'nvim-lualine/lualine.nvim'
-  use 'sbdchd/neoformat'
+  use 'Mofiqul/vscode.nvim'
 end)
