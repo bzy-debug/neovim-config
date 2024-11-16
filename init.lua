@@ -16,6 +16,7 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 vim.opt.hlsearch = false
+vim.opt.clipboard = "unnamedplus"
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
@@ -70,6 +71,7 @@ if vim.g.vscode then
     end
   end
 
+  k('n', 'gb', function() vscode.action('breadcrumbs.focusAndSelect') end, { noremap = true })
   k('n', ']d', function() vscode.action('editor.action.marker.next') end, { noremap = true })
   k('n', '[d', function() vscode.action('editor.action.marker.prev') end, { noremap = true })
   k('n', '<leader>r', function() vscode.action('editor.action.rename') end, { noremap = true })
