@@ -31,13 +31,6 @@ require('lazy').setup({
     "folke/flash.nvim",
     event = 'VeryLazy',
     opts = {},
-    keys = {
-      { "s",     mode = { "n", "x", "o" }, function() require("flash").jump() end,              desc = "Flash" },
-      { "S",     mode = { "n", "x", "o" }, function() require("flash").treesitter() end,        desc = "Flash Treesitter" },
-      { "r",     mode = "o",               function() require("flash").remote() end,            desc = "Remote Flash" },
-      { "R",     mode = { "o", "x" },      function() require("flash").treesitter_search() end, desc = "Treesitter Search" },
-      { "<c-s>", mode = { "c" },           function() require("flash").toggle() end,            desc = "Toggle Flash Search" },
-    },
   },
   {
     "kylechui/nvim-surround",
@@ -59,15 +52,10 @@ if vim.g.vscode then
   }
   local k = vim.keymap.set
 
-  local function nvim_feedkeys(keys)
-    local feedable_keys = vim.api.nvim_replace_termcodes(keys, true, false, true)
-    vim.api.nvim_feedkeys(feedable_keys, "n", false)
-  end
-
-  local function jump_wrap(keys)
+  local function jw(f)
     return function()
       vscode.call('jumplist.registerJump')
-      nvim_feedkeys(keys)
+      f()
     end
   end
 
@@ -77,11 +65,13 @@ if vim.g.vscode then
   k('n', '<leader>r', function() vscode.action('editor.action.rename') end, { noremap = true })
   k('n', '<leader>l', function() vscode.action('codelens.showLensesInCurrentLine') end, { noremap = true })
   k('n', '<leader>d', function() vscode.action('editor.debug.action.toggleBreakpoint') end, { noremap = true })
-  k('n', 'gd', jump_wrap('gd'), { noremap = true })
-  k('n', 's', jump_wrap('s'), { noremap = true })
-  k('n', '<S-m>', 'mciw*', { remap = true })
-  k('n', '<c-o>', function() vscode.action('jumplist.jumpBack') end, { noremap = true })
-  k('n', '<c-i>', function() vscode.action('jumplist.jumpForward') end, { noremap = true })
+  k({ 'n', 'x' }, 'gd', jw(function() vscode.action('editor.action.revealDefinition') end), { noremap = true })
+  k({ 'n', 'x' }, 'gH', jw(function() vscode.action('editor.action.goToReferences') end), { noremap = true })
+  k({ 'n', 'x' }, '<C-]>', jw(function() vscode.action('editor.action.revealDefinition') end), { noremap = true })
+  k({ 'n', 'x', 'o' }, 's', jw(function() require('flash').jump() end), { noremap = true })
+  k({ 'n', 'x', 'i' }, "<C-d>", function() cursors.addSelectionToNextFindMatch() end)
+  k({ 'n', 'x' }, '<c-o>', function() vscode.action('jumplist.jumpBack') end, { noremap = true })
+  k({ 'n', 'x' }, '<c-i>', function() vscode.action('jumplist.jumpForward') end, { noremap = true })
 else
   -- ordinary Neovim
 end
