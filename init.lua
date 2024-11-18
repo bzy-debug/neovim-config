@@ -79,6 +79,7 @@ if vim.g.vscode then
   k({ 'n', 'x' }, '<c-k>', function() vscode.action('editor.action.smartSelect.expand') end, { noremap = true })
   k({ 'n', 'x' }, '<c-j>', function() vscode.action('editor.action.smartSelect.shrink') end, { noremap = true })
   k({ 'n', 'x', 'i' }, "<C-d>", function() cursors.addSelectionToNextFindMatch() end)
+  k({ 'n', 'x', 'o' }, 's', function() require('flash').jump() end, { noremap = true })
 
   k('n', '<CR>', 'o<Esc>', { noremap = true })
   k('n', 'H', '^', { noremap = true })
@@ -90,7 +91,6 @@ if vim.g.vscode then
   k({ 'n', 'x' }, 'gd', jw(function() vscode.action('editor.action.revealDefinition') end), { noremap = true })
   k({ 'n', 'x' }, 'gr', jw(function() vscode.action('editor.action.goToReferences') end), { noremap = true })
   k({ 'n', 'x' }, '<C-]>', jw(function() vscode.action('editor.action.revealDefinition') end), { noremap = true })
-  k({ 'n', 'x', 'o' }, 's', jw(function() require('flash').jump() end), { noremap = true })
   k({ 'n', 'x' }, '<c-o>', function() vscode.action('jumplist.jumpBack') end, { noremap = true })
   k({ 'n', 'x' }, '<c-i>', function() vscode.action('jumplist.jumpForward') end, { noremap = true })
 else
