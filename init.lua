@@ -50,6 +50,10 @@ require('lazy').setup({
   { "chrisgrieser/nvim-spider", lazy = true },
 })
 
+require('spider').setup({
+  skipInsignificantPunctuation = false
+})
+
 if vim.g.vscode then
   local vscode = require('vscode')
   local cursors = require('vscode-multi-cursor')
@@ -69,18 +73,22 @@ if vim.g.vscode then
   k('n', 'gb', function() vscode.action('breadcrumbs.focusAndSelect') end, { noremap = true })
   k('n', ']d', function() vscode.action('editor.action.marker.next') end, { noremap = true })
   k('n', '[d', function() vscode.action('editor.action.marker.prev') end, { noremap = true })
-  k('n', '<leader>r', function() vscode.action('editor.action.rename') end, { noremap = true })
   k('n', '<leader>l', function() vscode.action('codelens.showLensesInCurrentLine') end, { noremap = true })
   k('n', '<leader>d', function() vscode.action('editor.debug.action.toggleBreakpoint') end, { noremap = true })
+  k('n', '<leader>r', function() vscode.action('editor.action.rename') end, { noremap = true })
+  k({ 'n', 'x' }, '<c-k>', function() vscode.action('editor.action.smartSelect.expand') end, { noremap = true })
+  k({ 'n', 'x' }, '<c-j>', function() vscode.action('editor.action.smartSelect.shrink') end, { noremap = true })
   k({ 'n', 'x', 'i' }, "<C-d>", function() cursors.addSelectionToNextFindMatch() end)
 
   k('n', '<CR>', 'o<Esc>', { noremap = true })
+  k('n', 'H', '^', { noremap = true })
+  k('n', 'L', '$', { noremap = true })
   k({ "n", "o", "x" }, "w", "<cmd>lua require('spider').motion('w')<CR>", { desc = "Spider-w" })
-  k({ "n", "o", "x" }, "e", "<cmd>lua require('spider').motion('e')<CR>", { desc = "Spider-e" })
   k({ "n", "o", "x" }, "b", "<cmd>lua require('spider').motion('b')<CR>", { desc = "Spider-b" })
+  k({ "n", "o", "x" }, "e", "<cmd>lua require('spider').motion('e')<CR>", { desc = "Spider-e" })
 
   k({ 'n', 'x' }, 'gd', jw(function() vscode.action('editor.action.revealDefinition') end), { noremap = true })
-  k({ 'n', 'x' }, 'gH', jw(function() vscode.action('editor.action.goToReferences') end), { noremap = true })
+  k({ 'n', 'x' }, 'gr', jw(function() vscode.action('editor.action.goToReferences') end), { noremap = true })
   k({ 'n', 'x' }, '<C-]>', jw(function() vscode.action('editor.action.revealDefinition') end), { noremap = true })
   k({ 'n', 'x', 'o' }, 's', jw(function() require('flash').jump() end), { noremap = true })
   k({ 'n', 'x' }, '<c-o>', function() vscode.action('jumplist.jumpBack') end, { noremap = true })
