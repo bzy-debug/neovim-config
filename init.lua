@@ -66,8 +66,6 @@ if vim.g.vscode then
     end
   end
 
-  k('n', 'gb', function() vscode.action('breadcrumbs.focusAndSelect') end, { noremap = true })
-  k('n', 'gs', function() vscode.action('workbench.action.gotoSymbol') end, { noremap = true })
   k('n', ']d', function() vscode.action('editor.action.marker.next') end, { noremap = true })
   k('n', '[d', function() vscode.action('editor.action.marker.prev') end, { noremap = true })
   k('n', '<leader>l', function() vscode.action('codelens.showLensesInCurrentLine') end, { noremap = true })
@@ -87,6 +85,9 @@ if vim.g.vscode then
 
   k({ 'n', 'x' }, 'gd', jw(function() vscode.action('editor.action.revealDefinition') end), { noremap = true })
   k({ 'n', 'x' }, 'gr', jw(function() vscode.action('editor.action.goToReferences') end), { noremap = true })
+  k({ 'n', 'x' }, 'gb', jw(function() vscode.action('breadcrumbs.focusAndSelect') end), { noremap = true })
+  k({ 'n', 'x' }, 'gs', jw(function() vscode.action('workbench.action.gotoSymbol') end), { noremap = true })
+  k({ 'n', 'x' }, 'gi', jw(function() vscode.action('editor.action.goToImplementation') end), { noremap = true })
   k({ 'n', 'x' }, '<C-]>', jw(function() vscode.action('editor.action.revealDefinition') end), { noremap = true })
   k({ 'n', 'x' }, '<c-o>', function() vscode.action('jumplist.jumpBack') end, { noremap = true })
   k({ 'n', 'x' }, '<c-i>', function() vscode.action('jumplist.jumpForward') end, { noremap = true })
